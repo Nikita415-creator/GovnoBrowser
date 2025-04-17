@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to GovnoS</title>
+    <style>
+        body {
+            background-color: #0D1B2A;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        h1 {
+            font-size: 5rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            animation: pulse 3s infinite alternate;
+        }
+
+        p {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            max-width: 70%;
+            margin: auto;
+        }
+
+        input[type="text"] {
+            background-color: #1a2639;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 80%;
+            color: white;
+            text-align: center;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            background-color: #2b3e5b;
+            color: #ccc;
+            outline: none;
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5), inset 0 0 5px rgba(255, 255, 255, 0.5);
+            animation-name: twinkle;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .star:nth-child(1) { top: 10%; left: 25%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 30%; left: 75%; animation-delay: 1s; }
+        .star:nth-child(3) { top: 50%; left: 50%; animation-delay: 2s; }
+        .star:nth-child(4) { top: 70%; left: 25%; animation-delay: 3s; }
+        .star:nth-child(5) { top: 90%; left: 75%; animation-delay: 4s; }
+
+        .google-button {
+            position: fixed;
+            bottom: 20px;
+            right: -180px;
+            background-color: #1c4d9d;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .visible {
+            right: 40px;
+        }
+
+        .secondTEXT {
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="stars">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+</div>
+<div class="container">
+    <h1>GovnoS Browser</h1>
+    <p class="firstTEXT">ТИКТОК ЛАВ<br class="secondTEXT"></p>
+
+    <form onsubmit="window.location.href='https://www.google.com/search?q=' + encodeURIComponent(this.q.value); return false;">
+        <input type="text" name="q" placeholder="Поиск в Google...">
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+<script>
+    gsap.from('.container', { duration: 1, y: '-=100%', ease: 'power2.out' });
+</script>
+</body>
+</html>
