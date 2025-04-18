@@ -1,11 +1,15 @@
 import sys
 import os
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QToolBar, QAction, 
-                            QLineEdit, QTabWidget, QTabBar, QStyleFactory)
+                             QLineEdit, QTabWidget, QStyleFactory)
 from PyQt5.QtWebEngineWidgets import QWebEngineView
-from PyQt5.QtCore import QUrl, Qt
+from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QIcon
 
+class CustomWebEngineView(QWebEngineView):
+    def createWindow(self, _type):
+        # Открываем любые новые окна в текущем представлении
+        return self
 
 class GovnoSBrowser(QMainWindow):
     def __init__(self):
@@ -13,22 +17,16 @@ class GovnoSBrowser(QMainWindow):
         self.setWindowTitle("GovnoS Browser")
         self.setGeometry(100, 100, 1200, 800)
 
-        # Стили для всего приложения
         self.setStyleSheet("""
-            /* Главное окно */
             QMainWindow {
                 background-color: #2b2b2b;
             }
-            
-            /* Панель инструментов */
             QToolBar {
                 background-color: #353535;
                 border: none;
                 padding: 4px;
                 spacing: 5px;
             }
-            
-            /* Кнопки */
             QToolButton {
                 background-color: #454545;
                 color: white;
@@ -37,16 +35,12 @@ class GovnoSBrowser(QMainWindow):
                 border-radius: 4px;
                 min-width: 30px;
             }
-            
             QToolButton:hover {
                 background-color: #5a5a5a;
             }
-            
             QToolButton:pressed {
                 background-color: #3a3a3a;
             }
-            
-            /* Поле адреса */
             QLineEdit {
                 background-color: #454545;
                 color: white;
@@ -56,18 +50,14 @@ class GovnoSBrowser(QMainWindow):
                 font-family: Arial;
                 selection-background-color: #5a5a5a;
             }
-            
-            /* Вкладки */
             QTabWidget::pane {
                 border: none;
                 background: #2b2b2b;
             }
-            
             QTabBar {
                 background: #353535;
                 border: none;
             }
-            
             QTabBar::tab {
                 background: #454545;
                 color: white;
@@ -77,23 +67,16 @@ class GovnoSBrowser(QMainWindow):
                 border-top-right-radius: 4px;
                 margin-right: 2px;
             }
-            
             QTabBar::tab:selected {
                 background: #2b2b2b;
                 border-bottom: 2px solid #5a5a5a;
             }
-            
             QTabBar::tab:hover {
                 background: #5a5a5a;
             }
-            
-            QTabBar::close-button {
-                image: url(close_icon.png);
-                subcontrol-position: right;
-            }
         """)
 
-        # Настройка вкладок
+        # Вкладки
         self.tabs = QTabWidget()
         self.tabs.setTabsClosable(True)
         self.tabs.tabCloseRequested.connect(self.close_tab)
@@ -101,7 +84,7 @@ class GovnoSBrowser(QMainWindow):
         self.tabs.setMovable(True)
         self.setCentralWidget(self.tabs)
 
-        # Первая вкладка
+        # Добавляем первую вкладку
         self.add_new_tab(self.get_home_url(), "Новая вкладка")
 
         # Панель инструментов
@@ -140,13 +123,12 @@ class GovnoSBrowser(QMainWindow):
         self.tabs.currentChanged.connect(self.update_current_tab)
 
     def get_home_url(self):
-        """Возвращает URL домашней страницы (start.html или Google)"""
         start_page = os.path.abspath("start.html")
-        return QUrl.fromLocalFile(start_page) if os.path.exists(start_page) else QUrl("https://google.com")
+        return QUrl.fromLocalFile(start_page) if os.path.exists(start_page) else QUrl("https://yandex.ru")
 
     def add_new_tab(self, url, title="Новая вкладка"):
         """Добавляет новую вкладку"""
-        browser = QWebEngineView()
+        browser = CustomWebEngineView()
         browser.setUrl(url)
         browser.urlChanged.connect(self.update_url)
         self.tabs.addTab(browser, title)
@@ -167,12 +149,12 @@ class GovnoSBrowser(QMainWindow):
         url = self.url_bar.text().strip()
         if not url:
             return
-            
+
         if "." not in url and " " in url:
-            url = f"https://google.com/search?q={url.replace(' ', '+')}"
+            url = f"https://yandex.ru/search/?text={url.replace(' ', '+')}"
         elif not url.startswith(("http://", "https://")):
             url = "https://" + url
-            
+
         self.tabs.currentWidget().setUrl(QUrl(url))
 
     def update_url(self, q):
@@ -185,7 +167,7 @@ class GovnoSBrowser(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setStyle(QStyleFactory.create("Fusion"))  # хз для чего но пусть будет
+    app.setStyle(QStyleFactory.create("Fusion"))
     window = GovnoSBrowser()
     window.show()
     sys.exit(app.exec_())
