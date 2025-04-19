@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to GovnoS</title>
+    <title>Начальная страница</title>
     <style>
         body {
             background-color: #0D1B2A;
@@ -46,7 +46,6 @@
             max-width: 80%;
             color: white;
             text-align: center;
-            margin-top: 2rem;
             transition: all 0.3s ease;
         }
 
@@ -56,12 +55,53 @@
             outline: none;
         }
 
-        button {
-            background-color: transparent;
+        select {
+            background-color: #1a2639;
+            color: white;
             border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            background-color: #2b3e5b;
+        }
+
+        button {
+            background-color: #1c4d9d;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 8px;
             cursor: pointer;
-            outline: none;
-            transition: transform 0.3s ease-in-out;
+            transition: all 0.3s ease;
+            margin-left: 15px; /* Отступ между полем ввода и кнопкой */
+            width: auto;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button:hover {
+            background-color: #1a3c5e;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            margin-top: 40px; /* Добавлен отступ сверху */
+        }
+
+        .form-input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         @keyframes fadeIn {
@@ -106,44 +146,76 @@
         .star:nth-child(4) { top: 70%; left: 25%; animation-delay: 3s; }
         .star:nth-child(5) { top: 90%; left: 75%; animation-delay: 4s; }
 
-        .google-button {
+        /* Новые стили для подписи и ссылки */
+        .footer-info {
             position: fixed;
-            bottom: 20px;
-            right: -180px;
-            background-color: #1c4d9d;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.5s ease;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
         }
 
-        .visible {
-            right: 40px;
+        .author-sign {
+            margin-right: 20px;
+        }
+
+        .tiktok-link a {
+            color: inherit;
+            text-decoration: underline;
+            margin-left: 20px;
         }
 
         .secondTEXT {
             font-size: 10px;
-        }
+        } 
     </style>
 </head>
 <body>
 <div class="stars">
     <div class="star"></div>
     <div class="star"></div>
-    <div class="star"></div>
+    <div class="class="star"></div>
     <div class="star"></div>
     <div class="star"></div>
 </div>
 <div class="container">
-    <h1>GovnoS Browser</h1>
-    <p class="firstTEXT">ТИКТОК ЛАВ<br class="secondTEXT"></p>
-
-    <form onsubmit="window.location.href='https://www.google.com/search?q=' + encodeURIComponent(this.q.value); return false;">
-        <input type="text" name="q" placeholder="Поиск в Google...">
-    </form>
+    <h1>Govno Browser 🚀</h1>
+    <p class="firstTEXT">ТИКТОК ЛАВ 🤍💙❤️<br><a href="https://github.com/Nikita415-creator/GovnoSBrowser">GitHub</a></p>
+    
+    <div class="form-container">
+        <div class="form-input-container">
+            <form id="searchForm" onsubmit="handleSearch(event)">
+                <!-- Выпадающий список слева от поля -->
+                <select id="searchEngine">
+                    <option value="https://yandex.ru/search/?text=">Яндекс</option>
+                    <option value="https://www.google.com/search?q=">Google</option>
+                    <option value="https://duckduckgo.com/?q=">DuckDuckGo</option>
+                </select>
+                <!-- Поле для ввода поиска -->
+                <input type="text" id="searchQuery" placeholder="Поиск...">
+                <!-- Кнопка поиска справа -->
+                <button type="submit">Поиск</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+<!-- Новый блок с подписью и ссылкой -->
+<div class="footer-info">
+    <div class="tiktok-link"><a href="https://www.tiktok.com/@nikitakarmishev?_t=ZS-8vdAd2V0raM&_r=1">TikTok</a><br><a href="https://govno-browser.netlify.app">Сайт браузера</a></div>
+    <span class="author-sign">by NikitaKarmishev</span>
+</div>
+
+<script>
+    function handleSearch(event) {
+        event.preventDefault();
+        var query = document.getElementById('searchQuery').value;
+        var engine = document.getElementById('searchEngine').value;
+        window.location.href = engine + encodeURIComponent(query);
+    }
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
 <script>
     gsap.from('.container', { duration: 1, y: '-=100%', ease: 'power2.out' });

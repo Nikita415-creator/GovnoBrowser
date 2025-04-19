@@ -174,7 +174,7 @@ class BrowserWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setStyle("Fusion")
+    app.setStyle("Fusion") #ЫЫЫЫЫ ДИЗАЙН ЫЫЫЫЫЫ
     window = BrowserWindow()
     window.show()
     sys.exit(app.exec_())
