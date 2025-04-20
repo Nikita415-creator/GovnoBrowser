@@ -4,15 +4,17 @@ from PyQt5.QtCore import QUrl, Qt
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QTabWidget, QToolBar, QLineEdit, QPushButton, QTabBar, QStyle
 )
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, QWebEngineProfile
 
-if getattr(sys, 'frozen', False):
-    base_path = sys.MEIPASS
-else:
-    base_path = os.path.dirname(os.path.abspath(__file__))
 
-html_path = os.path.join(base_path, "start.html")
-# self.start_page = QUrl.fromLocalFile(html_path)
+
+# if getattr(sys, 'frozen', False):
+#     base_path = sys.MEIPASS
+# else:
+#     base_path = os.path.dirname(os.path.abspath(__file__))
+
+# html_path = os.path.join(base_path, "start.html")
+# # self.start_page = QUrl.fromLocalFile(html_path)
 
 class WebPage(QWebEnginePage):
     def __init__(self, parent=None):
@@ -47,7 +49,10 @@ class BrowserWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Govno Browser")
         self.resize(1200, 800)
-        self.start_page = QUrl.fromLocalFile(os.path.abspath("start.html"))
+        self.start_page = QUrl("https://gb-start.netlify.app")
+
+        profile = QWebEngineProfile.defaultProfile()
+        profile.setHttpUserAgent("GovnoBrovser/1.0")
 
         self.create_toolbar()
         self.setup_tabs()
