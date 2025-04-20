@@ -74,6 +74,12 @@ If you want to use the browser fully, build the project yourself:
           4.Enter this into the terminal pyinstaller --name=GovnoBrowser --windowed --onefile --add-data "Replace this with the path given by the previous command" browserG-PyQt6.py
 
           5. The direct installation file will appear in the folder ./dist in the same folder as the file browserG-PyQt6.py
+ㅤ            
+ㅤ
+
+Donate: https://www.donationalerts.com/r/karmishev415
+
+ㅤ
           
 
 IMPORTANT: This program was created exclusively for entertainment purposes, for testing equipment and skills!
