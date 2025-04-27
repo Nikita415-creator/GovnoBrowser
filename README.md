@@ -45,7 +45,7 @@ RUSSIAN-РУССКИЙ: Хей! Здесь я опубликовал свое т
 
 ㅤ
 
-ВАЖНО: Данная программа создана исключительно в развлекательных целяй, для тестирования оборудования и навыков! 
+ВАЖНО: Данная программа создана KarmIsheV, и является полностью рабочей и функциональной!
 
 I--------------------------------------------------------------------------
 
@@ -86,6 +86,6 @@ Donate: https://www.donationalerts.com/r/karmishev415
 ㅤ
           
 
-IMPORTANT: This program was created exclusively for entertainment purposes, for testing equipment and skills!
+IMPORTANT: This program was created by KarmIsheV, and is fully working and functional!
 
 
