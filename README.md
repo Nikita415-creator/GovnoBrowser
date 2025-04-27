@@ -2,6 +2,7 @@
 A great browser written in python using the PyQt6 library.
 
 Отличный браузер написанный на python с использованием библиотеки PyQt6.
+Официальный сайт: https://govno-browser.netlify.app
 
 I-------------------------------------------------------------------------
 
