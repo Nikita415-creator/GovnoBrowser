@@ -13,7 +13,7 @@ RUSSIAN-РУССКИЙ: Хей! Здесь я опубликовал свое т
 
 Для запуска: 
 
-            1. скачайте новейшую версию программы (browserG-PyQt6.py) т.к все дальнейшие действия будут выполнятся именно в ней!
+            1. скачайте новейшую версию программы (GovnoBrowser-PyQt6.py) т.к все дальнейшие действия будут выполнятся именно в ней!
         
             2. Скачайте и установите VS Code [https://code.visualstudio.com/download] с официального сайтa
             
@@ -21,10 +21,11 @@ RUSSIAN-РУССКИЙ: Хей! Здесь я опубликовал свое т
 
             4. Выполните установку необходимых пакетов через терминал: py -m pip install PyQt6 PyQt6-WebEngine
 
-            5. После окончания установки убеждаемся в отсутствии ошибок и запускаем файл browserG-PyQt6.py
+            5. После окончания установки убеждаемся в отсутствии ошибок и запускаем файл GovnoBrowser-PyQt6.py
 
 
 Если у вас ошибка при запуске программы на PyQt6 - обновите драйвера видеокарты. 
+Либо, обратитесь в поддержку по этой форме: 
 
 
 Если вы хотите пользоваться браузером полноценно выполните сборку проекта самостоятельно:
@@ -37,9 +38,9 @@ RUSSIAN-РУССКИЙ: Хей! Здесь я опубликовал свое т
             
             3. Введите это в терминал: python -c "import os, PyQt6.QtWebEngineWidgets as w; print(os.path.join(os.path.dirname(w.__file__), '..', 'Qt6', 'resources'))"
             
-            4.Введите это в терминал pyinstaller --name=GovnoBrowser --windowed --onefile --add-data "Замените это на путь который выдала прошлая команда" browserG-PyQt6.py
+            4.Введите это в терминал pyinstaller --name=GovnoBrowser --windowed --onefile --add-data "Замените это на путь который выдала прошлая команда" GovnoBrowser-PyQt6.py
             
-            5. Прямой установочный файл появится в папке ./dist в той же папке что и файл browserG-PyQt6.py
+            5. Прямой установочный файл появится в папке ./dist в той же папке что и файл GovnoBrowser-PyQt6.py
 ㅤ            
 ㅤ
 
@@ -58,7 +59,7 @@ For direct installation, download the previous version from the official website
 
 To launch: 
 
-         1. Download the latest version of the program (browserG-PyQt6.py ) because all further actions will be performed in it!
+         1. Download the latest version of the program (GovnoBrowser-PyQt6.py ) because all further actions will be performed in it!
 
          2. Download and install VS Code [https://code .visualstudio.com/download ] from the official website
 
@@ -66,7 +67,7 @@ To launch:
 
          4. Install the necessary packages via the terminal: py -m pip install PyQt6 PyQt6-WebEngine
 
-         5. After the installation is complete, make sure that there are no errors and run the file. browserG-PyQt6.py
+         5. After the installation is complete, make sure that there are no errors and run the file. GovnoBrowser-PyQt6.py
 
 If you want to use the browser fully, build the project yourself:
 
@@ -78,7 +79,7 @@ If you want to use the browser fully, build the project yourself:
 
           3. Enter this into the terminal: python -c "import os, PyQt6.QtWebEngineWidgets as w; print(os.path.join(os.path.dirname(w.__file__), '..', 'Qt6', 'resources'))"
 
-          4.Enter this into the terminal pyinstaller --name=GovnoBrowser --windowed --onefile --add-data "Replace this with the path given by the previous command" browserG-PyQt6.py
+          4.Enter this into the terminal pyinstaller --name=GovnoBrowser --windowed --onefile --add-data "Replace this with the path given by the previous command" GovnoBrowser-PyQt6.py
 
           5. The direct installation file will appear in the folder ./dist in the same folder as the file browserG-PyQt6.py
 ㅤ            
